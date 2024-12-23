@@ -2,6 +2,7 @@ package repository
 
 import (
 	"app/internal"
+	"errors"
 )
 
 // NewVehicleMap is a function that returns a new instance of VehicleMap
@@ -38,6 +39,10 @@ func (r *VehicleMap) GetByDimensions(minLength, maxLength, minWidth, maxWidth fl
 		if vehicle.Length >= minLength && vehicle.Length <= maxLength && vehicle.Width >= minWidth && vehicle.Width <= maxWidth {
 			v[index] = vehicle
 		}
+	}
+	if len(v) == 0 {
+		err = errors.New("vehicle not found")
+		return nil, err
 	}
 	return
 }
