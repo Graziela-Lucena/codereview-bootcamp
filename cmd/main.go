@@ -12,11 +12,12 @@ func main() {
 	// app
 	// - config
 	cfg := &application.ConfigServerChi{
-		ServerAddress:  ":8081",
+		ServerAddress:  ":8080",
 		LoaderFilePath: "docs/db/vehicles_100.json",
 	}
 	app := application.NewServerChi(cfg)
 	// - run
+	fmt.Println("Iniciando...")
 	if err := app.Run(); err != nil {
 		fmt.Println(err)
 		return
